@@ -1,0 +1,43 @@
+#! /bin/bash
+
+## updateMe: created by User3xample jun 2021
+#  Version:  0.1
+#  Licence:  personal use only, non-comercial.
+#  Found at: https://github.com/user3xample/updateMe
+#
+#  use: Quick program to update, upgrade and remove all the leftover/ unused files on a linux system.
+#  Its not fancy but it works and gets the job done. If you dont feel comftable doing auto yes to everything then remove the -y where apropriate it will still work.
+#  
+#  Use at your own risk.
+#####
+#  Install:
+#  1. Save script file as updateMe in  home directory.
+#  2. from terminal type $ chmod +x updateMe
+#  3. You will be able to run from terminal via $ ./updateMe
+#####
+
+
+start=$SECONDS # start timer.
+clear  # clear the screen.
+
+sudo apt update -y ; sudo apt full-upgrade -y ;  sudo apt autoremove ; sudo apt autoclean
+ # Answer yes to everything and run update, full-upgrade then a autoremove, autoclean.
+
+clear  # Clear the screen again.
+
+ # Print some text to inform the user whats been done. 
+echo " "
+echo "-------------------"
+lsb_release -d -r -c  # Print to screen the OS details.
+uname -s -r  # Print to screen What Linux we are using.
+echo "-------------------"
+echo "Update       : Done"  # Unfortunately these would say done even if you didnt have internet giving a false indication.
+echo "Full-upgrade : Done"
+echo "Clean up     : Done"
+echo "-------------------"
+echo "-------------------"
+echo  Time Taken=$(( SECONDS - start))" seconds"  # Print how long the whole process took.
+echo "updateMe: created by User3xample "
+echo "Finished--"
+
+#end
